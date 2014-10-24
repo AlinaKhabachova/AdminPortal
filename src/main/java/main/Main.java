@@ -16,10 +16,10 @@ public class Main
         
         u1.setFirstName("Donna");
         u1.setLastName("Madonna");
-        u1.setPassword("1111");
+        u1.setPasswords("1111");
         u1.setRole("admin");
         
-        Factory.getInstance().getUserDao().addUser(u1);
+       Factory.getInstance().getUserDao().addUser(u1);
         
         List<User> users = (List<User>) Factory.getInstance().getUserDao()
                 .getAllUsers();

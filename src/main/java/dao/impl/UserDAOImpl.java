@@ -28,7 +28,7 @@ public class UserDAOImpl implements UserDAO
           session.save(user);
           session.getTransaction().commit();
         } catch (Exception e) {
-          JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка при вставке", JOptionPane.OK_OPTION);
+          JOptionPane.showMessageDialog(null, e.getMessage(), "error inserting", JOptionPane.OK_OPTION);
         } finally {
           if (session != null && session.isOpen()) {
 
@@ -48,7 +48,7 @@ public class UserDAOImpl implements UserDAO
           session.update(user);
           session.getTransaction().commit();
         } catch (Exception e) {
-          JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка при вставке", JOptionPane.OK_OPTION);
+          JOptionPane.showMessageDialog(null, e.getMessage(), "error 'insert'", JOptionPane.OK_OPTION);
         } finally {
           if (session != null && session.isOpen()) {
             session.close();
@@ -66,7 +66,7 @@ public class UserDAOImpl implements UserDAO
           session = HibernateUtil.createSessionFactory().openSession();
           user = (User) session.load(User.class, user_id);
         } catch (Exception e) {
-          JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка 'findById'", JOptionPane.OK_OPTION);
+          JOptionPane.showMessageDialog(null, e.getMessage(), "error 'findById'", JOptionPane.OK_OPTION);
         } finally {
           if (session != null && session.isOpen()) {
             session.close();
@@ -84,7 +84,7 @@ public class UserDAOImpl implements UserDAO
           session = HibernateUtil.createSessionFactory().openSession();
           users = session.createCriteria(User.class).list();
         } catch (Exception e) {
-          JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка 'getAll'", JOptionPane.OK_OPTION);
+          JOptionPane.showMessageDialog(null, e.getMessage(), "error 'getAll'", JOptionPane.OK_OPTION);
         } finally {
           if (session != null && session.isOpen()) {
             session.close();
@@ -103,7 +103,7 @@ public class UserDAOImpl implements UserDAO
           session.delete(user);
           session.getTransaction().commit();
         } catch (Exception e) {
-          JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка при удалении", JOptionPane.OK_OPTION);
+          JOptionPane.showMessageDialog(null, e.getMessage(), "error 'delete'", JOptionPane.OK_OPTION);
         } finally {
           if (session != null && session.isOpen()) {
             session.close();

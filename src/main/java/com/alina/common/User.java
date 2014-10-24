@@ -42,12 +42,12 @@ public class User
         this.lastName = lastName;
     }
     
-    public String getPassword()
+    public String getPasswords()
     {
         return passwords;
     }
     
-    public void setPassword(String password)
+    public void setPasswords(String password)
     {
         this.passwords = password;
     }
