@@ -1,4 +1,4 @@
-package dao;
+package com.alina.dao;
 
 import com.alina.common.User;
 

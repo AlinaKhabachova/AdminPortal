@@ -1,11 +1,10 @@
-package dao;
+package com.alina.dao;
 
-import dao.UserDAO;
-import dao.impl.UserDAOImpl;
+import com.alina.dao.impl.UserDAOImpl;
 
 public class Factory
 {
-    private static UserDAO  userDao  = null;
+    private static UserDAO userDao  = null;
     private static Factory instance = null;
     
     public static synchronized Factory getInstance()

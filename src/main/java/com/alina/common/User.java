@@ -5,7 +5,7 @@ public class User
     private Long   id;
     private String firstName;
     private String lastName;
-    private String passwords;
+    private String password;
     private String role;
     
     public User()
@@ -42,14 +42,14 @@ public class User
         this.lastName = lastName;
     }
     
-    public String getPasswords()
+    public String getPassword()
     {
-        return passwords;
+        return password;
     }
     
-    public void setPasswords(String password)
+    public void setPassword(String password)
     {
-        this.passwords = password;
+        this.password = password;
     }
     
     public String getRole()

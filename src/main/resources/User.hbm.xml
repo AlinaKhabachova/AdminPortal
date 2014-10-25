@@ -10,7 +10,7 @@
 		</id>
 		<property column="first_name" name="firstName" type="java.lang.String" />
 		<property column="last_name" name="lastName" type="java.lang.String" />
-		<property column="passwords" name="passwords"  type="java.lang.String" />
+		<property column="passwords" name="password"  type="java.lang.String" />
 		<property column="role" name="role" type="java.lang.String" />
 
 	</class>
