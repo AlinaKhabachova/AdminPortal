@@ -1,11 +1,31 @@
 package com.alina.common;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "users")
+@NamedQuery(name = "User.getAll", query = "SELECT u from User u")
 public class User
 {
+    @Id
+    @GeneratedValue
     private Long   id;
+    
+    @Column(name = "first_name")
     private String firstName;
+    
+    @Column(name = "last_name")
     private String lastName;
+    
+    @Column(name = "password")
     private String password;
+    
+    @Column(name = "role")
     private String role;
     
     public User()
@@ -60,5 +80,13 @@ public class User
     public void setRole(String role)
     {
         this.role = role;
+    }
+    
+    @Override
+    public String toString()
+    {
+        return "User{" + "id=" + id + ", firstname='" + firstName + '\''
+                + ", secondname=" + lastName + ", passwors=" + password
+                + ", role=" + role + '}';
     }
 }
