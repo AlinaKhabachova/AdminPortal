@@ -12,16 +12,16 @@ public class Main
     
     public static void main(String[] args) throws SQLException
     {
-        /*
-         * User u1 = new User();
-         * 
-         * u1.setFirstName("Donna"); u1.setLastName("Madonna");
-         * u1.setPassword("1111"); u1.setRole("admin");
-         * 
-         * User user = service.add(u1);
-         * 
-         * System.out.println(user);
-         */
+        
+          User u1 = new User();
+          
+          u1.setFirstName("Donna"); u1.setLastName("Madonna");
+          u1.setPassword("1111"); u1.setRole("admin");
+          
+          User user = service.add(u1);
+          System.out.println(user);
+
+
         
         List<User> users = service.getAll();
         
