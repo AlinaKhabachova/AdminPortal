@@ -19,10 +19,10 @@ public class IndexedEntityService
         return userFromDB;
     }
     
-    public void update(User user)
+    public void update(IndexedEntity iE)
     {
         em.getTransaction().begin();
-        em.merge(user);
+        em.merge(iE);
         em.getTransaction().commit();
     }
     
@@ -31,10 +31,10 @@ public class IndexedEntityService
         return em.find(IndexedEntity.class, id);
     }
     
-    public void delete(Long id)
+    public void delete(IndexedEntity iE)
     {
         em.getTransaction().begin();
-        em.remove(getById(id));
+        em.remove(iE);
         em.getTransaction().commit();
     }
     

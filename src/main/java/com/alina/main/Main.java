@@ -19,10 +19,9 @@ public class Main
         u1.setLastName("Madonna");
         u1.setPassword("1111");
         u1.setRole("admin");
-              
         
-        IndexedEntity user  = service.add(u1);
-        System.out.println(user);        
+        IndexedEntity user = service.add(u1);
+        System.out.println(user);
         
         // List<User> users = service.getAll();
         //
