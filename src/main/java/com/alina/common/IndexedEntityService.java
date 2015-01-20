@@ -2,9 +2,11 @@ package com.alina.common;
 
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
+@ManagedBean(name = "indexedEntityService")
 public class IndexedEntityService
 {
     

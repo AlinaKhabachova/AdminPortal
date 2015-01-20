@@ -1,11 +1,13 @@
 package com.alina.common;
 
+import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
+@ManagedBean(name = "user")
 public class User extends IndexedEntity
 {
     @Column(name = "first_name")
@@ -13,6 +15,12 @@ public class User extends IndexedEntity
     
     @Column(name = "last_name")
     private String lastName;
+    
+    @Column(name = "email")
+    private String email;
+    
+    @Column(name = "login")
+    private String login;
     
     @Column(name = "password")
     private String password;
@@ -62,6 +70,26 @@ public class User extends IndexedEntity
     public void setRole(String role)
     {
         this.role = role;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public String getLogin()
+    {
+        return login;
+    }
+
+    public void setLogin(String login)
+    {
+        this.login = login;
     }
     
     @Override
