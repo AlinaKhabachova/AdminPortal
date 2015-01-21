@@ -10,9 +10,12 @@ import com.alina.common.IndexedEntityService;
 @ViewScoped
 public class RegistrationBean
 {
-    private IndexedEntityService service = new IndexedEntityService();
+    private User user = new User();
     
-    private User                 user    = new User();
+    public void save()
+    {
+        IndexedEntityService.add(user);
+    }
     
     public User getUser()
     {
@@ -22,20 +25,5 @@ public class RegistrationBean
     public void setUser(User user)
     {
         this.user = user;
-    }
-    
-    public IndexedEntityService getService()
-    {
-        return service;
-    }
-    
-    public void setService(IndexedEntityService service)
-    {
-        this.service = service;
-    }
-    
-    public void save()
-    {
-        service.add(user);
     }
 }

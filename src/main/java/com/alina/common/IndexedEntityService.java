@@ -7,10 +7,10 @@ import javax.persistence.Persistence;
 public class IndexedEntityService
 {
     
-    public EntityManager em = Persistence.createEntityManagerFactory(
+    public static EntityManager em = Persistence.createEntityManagerFactory(
                                     "adminportal").createEntityManager();
     
-    public IndexedEntity add(User user)
+    public static IndexedEntity add(User user)
     {
         em.getTransaction().begin();
         User userFromDB = em.merge(user);
@@ -18,26 +18,26 @@ public class IndexedEntityService
         return userFromDB;
     }
     
-    public void update(IndexedEntity indexedEntity)
+    public static void update(IndexedEntity indexedEntity)
     {
         em.getTransaction().begin();
         em.merge(indexedEntity);
         em.getTransaction().commit();
     }
     
-    public IndexedEntity getById(Long id)
+    public static IndexedEntity getById(Long id)
     {
         return em.find(IndexedEntity.class, id);
     }
     
-    public void delete(IndexedEntity indexedEntity)
+    public static void delete(IndexedEntity indexedEntity)
     {
         em.getTransaction().begin();
         em.remove(indexedEntity);
         em.getTransaction().commit();
     }
     
-    public List<IndexedEntity> getAll()
+    public static List<IndexedEntity> getAll()
     {
         return null;
     }
