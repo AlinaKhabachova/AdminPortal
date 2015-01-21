@@ -1,4 +1,4 @@
-package com.alina.common;
+package com.alina.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

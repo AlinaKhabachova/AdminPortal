@@ -3,9 +3,9 @@ package com.alina.main;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.alina.common.IndexedEntity;
-import com.alina.common.User;
 import com.alina.common.IndexedEntityService;
+import com.alina.entity.IndexedEntity;
+import com.alina.entity.User;
 
 public class Main
 {

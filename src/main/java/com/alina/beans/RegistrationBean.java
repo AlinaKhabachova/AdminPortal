@@ -1,10 +1,10 @@
-package com.alina.common;
+package com.alina.beans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import com.alina.common.User;
 import com.alina.common.IndexedEntityService;
+import com.alina.entity.User;
 
 @ManagedBean(name = "registrationBean")
 @ViewScoped

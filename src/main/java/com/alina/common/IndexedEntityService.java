@@ -1,8 +1,12 @@
 package com.alina.common;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+
+import com.alina.entity.IndexedEntity;
+import com.alina.entity.User;
 
 public class IndexedEntityService
 {
