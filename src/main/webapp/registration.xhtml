@@ -12,22 +12,22 @@
 <h:body>
 	<h:form>
 		<h:outputText value="First Name:" />
-		<p:inputText value="#{user.firstName}" />
+		<p:inputText value="#{registrationBean.user.firstName}" />
 
 		<h:outputText value="Last Name:" />
-		<p:inputText value="#{user.lastName}" />
+		<p:inputText value="#{registrationBean.user.lastName}" />
 
 		<h:outputText value="Email:" />
-		<p:inputText value="#{user.email}" />
+		<p:inputText value="#{registrationBean.user.email}" />
 
 		<h:outputText value="Login:" />
-		<p:inputText value="#{user.login}" />
+		<p:inputText value="#{registrationBean.user.login}" />
 
 		<h:outputText value="Password:" />
-		<p:inputText value="#{user.password}" />
+		<p:inputText value="#{registrationBean.user.password}" />
 
 
-		<p:commandButton value="Save" action="#{indexedEntityService.add}" />
+		<p:commandButton value="Save" action="#{registrationBean.save}" />
 	</h:form>
 </h:body>
 </html>

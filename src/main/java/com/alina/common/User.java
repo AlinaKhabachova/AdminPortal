@@ -1,13 +1,11 @@
 package com.alina.common;
 
-import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
-@ManagedBean(name = "user")
+@Table(name = "users")
 public class User extends IndexedEntity
 {
     @Column(name = "first_name")
