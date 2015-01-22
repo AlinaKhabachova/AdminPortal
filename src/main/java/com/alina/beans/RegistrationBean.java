@@ -14,7 +14,7 @@ public class RegistrationBean
     
     public void save()
     {
-        IndexedEntityService.add(user);
+        System.out.println(user.toString());
     }
     
     public User getUser()

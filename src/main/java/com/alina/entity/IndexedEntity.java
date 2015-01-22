@@ -2,6 +2,7 @@ package com.alina.entity;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -9,8 +10,8 @@ import javax.persistence.MappedSuperclass;
 public class IndexedEntity
 {
     @Id
-    @Column(name = "user_id")
-    @GeneratedValue
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
     public IndexedEntity()
