@@ -69,22 +69,22 @@ public class User extends IndexedEntity
     {
         this.role = role;
     }
-
+    
     public String getEmail()
     {
         return email;
     }
-
+    
     public void setEmail(String email)
     {
         this.email = email;
     }
-
+    
     public String getLogin()
     {
         return login;
     }
-
+    
     public void setLogin(String login)
     {
         this.login = login;

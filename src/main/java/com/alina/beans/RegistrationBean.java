@@ -10,20 +10,36 @@ import com.alina.entity.User;
 @ViewScoped
 public class RegistrationBean
 {
+    private String rePassword;
+    
     private User user = new User();
     
     public void save()
     {
-        IndexedEntityService.add(user);
+        if(user.getPassword().equals(rePassword))
+            IndexedEntityService.add(user);
+        else
+            System.out.println("wrong password");
+        
     }
     
     public User getUser()
     {
         return user;
-    }
+    }    
     
     public void setUser(User user)
     {
         this.user = user;
+    }
+
+    public String getRePassword()
+    {
+        return rePassword;
+    }
+
+    public void setRePassword(String rePassword)
+    {
+        this.rePassword = rePassword;
     }
 }

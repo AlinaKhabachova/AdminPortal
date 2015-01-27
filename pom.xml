@@ -9,7 +9,7 @@
 	<groupId>com.study</groupId>
 	<artifactId>adminPortal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>AdminPortal</name>
+	<name>VideoChat</name>
 
 
 	<dependencies>
@@ -126,7 +126,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>AdminPortal</finalName>
+		<finalName>VideoChat</finalName>
 
 		<plugins>
 			<plugin>

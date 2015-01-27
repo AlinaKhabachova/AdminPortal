@@ -11,23 +11,30 @@
 </h:head>
 <h:body>
 	<h:form>
-		<h:outputText value="First Name:" />
-		<p:inputText value="#{registrationBean.user.firstName}" />
+		<center>
+			<h:panelGrid columns="2">
+				<h:outputText value="First Name:" />
+				<p:inputText value="#{registrationBean.user.firstName}" />
 
-		<h:outputText value="Last Name:" />
-		<p:inputText value="#{registrationBean.user.lastName}" />
+				<h:outputText value="Last Name:" />
+				<p:inputText value="#{registrationBean.user.lastName}" />
 
-		<h:outputText value="Email:" />
-		<p:inputText value="#{registrationBean.user.email}" />
+				<h:outputText value="Email:" />
+				<p:inputText value="#{registrationBean.user.email}" />
 
-		<h:outputText value="Login:" />
-		<p:inputText value="#{registrationBean.user.login}" />
+				<h:outputText value="Login:" />
+				<p:inputText value="#{registrationBean.user.login}" />
 
-		<h:outputText value="Password:" />
-		<p:inputText value="#{registrationBean.user.password}" />
+				<h:outputText value="Password:" />
+				<p:inputText value="#{registrationBean.user.password}" />
 
-
-		<p:commandButton value="Save" action="#{registrationBean.save}" />
+				<h:outputText value="Re password:" />
+				<p:inputText value="#{registrationBean.rePassword}" />
+			</h:panelGrid>
+			<h:panelGrid columns="1">
+				<p:commandButton value="Save" action="#{registrationBean.save}" />
+			</h:panelGrid>
+		</center>
 	</h:form>
 </h:body>
 </html>
