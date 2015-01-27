@@ -14,19 +14,29 @@
 		<center>
 			<h:panelGrid columns="2">
 				<h:outputText value="First Name:" />
-				<p:inputText value="#{registrationBean.user.firstName}" />
+				<p:inputText id="firstname"
+					value="#{registrationBean.user.firstName}" required="true">
+					<f:validateLength minimum="2" />
+				</p:inputText>
 
 				<h:outputText value="Last Name:" />
 				<p:inputText value="#{registrationBean.user.lastName}" />
 
 				<h:outputText value="Email:" />
-				<p:inputText value="#{registrationBean.user.email}" />
+				<p:inputText value="#{registrationBean.user.email}" required="true">
+					<f:validateLength minimum="5" />
+				</p:inputText>
 
 				<h:outputText value="Login:" />
-				<p:inputText value="#{registrationBean.user.login}" />
+				<p:inputText value="#{registrationBean.user.login}" required="true">
+					<f:validateLength minimum="2" />
+				</p:inputText>
 
 				<h:outputText value="Password:" />
-				<p:inputText value="#{registrationBean.user.password}" />
+				<p:inputText value="#{registrationBean.user.password}"
+					required="true">
+					<f:validateLength minimum="5" />
+				</p:inputText>
 
 				<h:outputText value="Re password:" />
 				<p:inputText value="#{registrationBean.rePassword}" />
