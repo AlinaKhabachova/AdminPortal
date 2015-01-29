@@ -25,9 +25,12 @@
 				<p:inputText value="#{registrationBean.user.lastName}" />
 
 				<h:outputText value="Email:" />
-				<p:inputText value="#{registrationBean.user.email}" required="true"
+				<p:inputText validatorMessage="Invalid email format"
+					value="#{registrationBean.user.email}" required="true"
 					label="Email">
 					<f:validateLength minimum="5" />
+					<f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 				</p:inputText>
 
 				<h:outputText value="Login:" />
