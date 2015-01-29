@@ -1,4 +1,4 @@
-package com.alina.entity;
+package com.alina.videochat.entity;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;

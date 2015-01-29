@@ -1,4 +1,4 @@
-package com.alina.common;
+package com.alina.videochat.common;
 
 import org.hibernate.SessionFactory;
 

@@ -1,12 +1,12 @@
-package com.alina.common;
+package com.alina.videochat.common;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
-import com.alina.entity.IndexedEntity;
-import com.alina.entity.User;
+import com.alina.videochat.entity.IndexedEntity;
+import com.alina.videochat.entity.User;
 
 public class IndexedEntityService
 {

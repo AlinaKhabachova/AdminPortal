@@ -1,10 +1,12 @@
-package com.alina.beans;
+package com.alina.videochat.beans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import com.alina.common.IndexedEntityService;
-import com.alina.entity.User;
+import org.apache.commons.codec.digest.DigestUtils;
+
+import com.alina.videochat.common.IndexedEntityService;
+import com.alina.videochat.entity.User;
 
 @ManagedBean(name = "registrationBean")
 @ViewScoped
@@ -19,7 +21,10 @@ public class RegistrationBean
         if (!"".equals(user.getPassword()))
         {
             if (user.getPassword().equals(rePassword))
+            {
+                user.setPassword(DigestUtils.md5Hex(user.getPassword()));
                 IndexedEntityService.add(user);
+            }
         }
         else
         {
@@ -27,6 +32,7 @@ public class RegistrationBean
         }
         
     }
+
     
     public User getUser()
     {
