@@ -13,16 +13,17 @@ import com.alina.videochat.entity.User;
 public class RegistrationBean
 {
     private String rePassword;
+    private String password;
     
     private User   user = new User();
     
     public void save()
     {
-        if (!"".equals(user.getPassword()))
+        if (!"".equals(password))
         {
-            if (user.getPassword().equals(rePassword))
+            if (password.equals(rePassword))
             {
-                user.setPassword(DigestUtils.md5Hex(user.getPassword()));
+                user.setPassword(DigestUtils.md5Hex(password));
                 IndexedEntityService.add(user);
             }
         }
@@ -52,5 +53,17 @@ public class RegistrationBean
     public void setRePassword(String rePassword)
     {
         this.rePassword = rePassword;
+    }
+
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 }
