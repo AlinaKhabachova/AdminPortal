@@ -16,19 +16,16 @@ public class RegistrationBean implements Serializable
 {
     private static final long serialVersionUID = 952405654821324694L;
     
-    private String            rePassword;
-    
     private String            password;
+    
+    private String            rePassword;
     
     private User              user             = new User();
     
     public void save()
     {
-        if (password.equals(rePassword))
-        {
-            user.setPassword(DigestUtils.md5Hex(password));
-            IndexedEntityService.save(user);
-        }
+        user.setPassword(DigestUtils.md5Hex(getPassword()));
+        IndexedEntityService.save(user);
     }
     
     public User getUser()
@@ -41,16 +38,6 @@ public class RegistrationBean implements Serializable
         this.user = user;
     }
     
-    public String getRePassword()
-    {
-        return rePassword;
-    }
-    
-    public void setRePassword(String rePassword)
-    {
-        this.rePassword = rePassword;
-    }
-    
     public String getPassword()
     {
         return password;
@@ -60,4 +47,14 @@ public class RegistrationBean implements Serializable
     {
         this.password = password;
     }
+    
+    public String getRePassword()
+    {
+        return rePassword;
+    }
+    
+    public void setRePassword(String rePassword)
+    {
+        this.rePassword = rePassword;
+    }   
 }

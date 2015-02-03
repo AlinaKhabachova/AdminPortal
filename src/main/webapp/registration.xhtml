@@ -40,14 +40,16 @@
 				</p:inputText>
 
 				<h:outputText value="Password:" />
-				<p:inputText value="#{registrationBean.password}"
+				<p:inputText id="password" type="password"
+					value="#{registrationBean.password}" match="repassword"
 					required="true" label="Password">
 					<f:validateLength minimum="5" />
-					
+
 				</p:inputText>
 
 				<h:outputText value="Re password:" />
-				<p:inputText value="#{registrationBean.rePassword}" />
+				<p:inputText id="repassword" type="password"
+					value="#{registrationBean.rePassword}" />
 			</h:panelGrid>
 			<h:panelGrid columns="1">
 				<p:commandButton value="Save" update="msgs"
