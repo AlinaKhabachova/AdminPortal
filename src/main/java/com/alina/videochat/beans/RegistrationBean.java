@@ -1,5 +1,7 @@
 package com.alina.videochat.beans;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -10,30 +12,24 @@ import com.alina.videochat.entity.User;
 
 @ManagedBean(name = "registrationBean")
 @ViewScoped
-public class RegistrationBean
+public class RegistrationBean implements Serializable
 {
-    private String rePassword;
-    private String password;
+    private static final long serialVersionUID = 952405654821324694L;
     
-    private User   user = new User();
+    private String            rePassword;
+    
+    private String            password;
+    
+    private User              user             = new User();
     
     public void save()
     {
-        if (!"".equals(password))
+        if (password.equals(rePassword))
         {
-            if (password.equals(rePassword))
-            {
-                user.setPassword(DigestUtils.md5Hex(password));
-                IndexedEntityService.add(user);
-            }
+            user.setPassword(DigestUtils.md5Hex(password));
+            IndexedEntityService.save(user);
         }
-        else
-        {
-            System.out.println("wrong password");
-        }
-        
     }
-
     
     public User getUser()
     {
@@ -54,14 +50,12 @@ public class RegistrationBean
     {
         this.rePassword = rePassword;
     }
-
-
+    
     public String getPassword()
     {
         return password;
     }
-
-
+    
     public void setPassword(String password)
     {
         this.password = password;

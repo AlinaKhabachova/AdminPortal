@@ -1,5 +1,7 @@
 package com.alina.videochat.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,8 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class IndexedEntity
+public class IndexedEntity implements Serializable
 {
+    private static final long serialVersionUID = 8196279969647531316L;
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)

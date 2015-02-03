@@ -2,12 +2,15 @@ package com.alina.videochat.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
 public class User extends IndexedEntity
 {
+    private static final long serialVersionUID = -7197404256920280771L;
+
     @Column(name = "first_name")
     private String firstName;
     
@@ -25,6 +28,9 @@ public class User extends IndexedEntity
     
     @Column(name = "role")
     private String role;
+    
+    @Lob
+    private byte[] image;
     
     public User()
     {
@@ -88,6 +94,16 @@ public class User extends IndexedEntity
     public void setLogin(String login)
     {
         this.login = login;
+    }
+    
+    public byte[] getImage()
+    {
+        return image;
+    }
+    
+    public void setImage(byte[] image)
+    {
+        this.image = image;
     }
     
     @Override
