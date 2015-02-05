@@ -27,9 +27,11 @@ public class RegistrationBean implements Serializable
     
     private User              user             = new User();
     
+    private boolean           confirmPassword;
+    
     public void save()
     {
-        if (getPassword().equals(getRePassword()))
+        if (isConfirmPassword())
         {
             user.setPassword(DigestUtils.md5Hex(getPassword()));
             IndexedEntityService.save(getUser());
@@ -39,22 +41,27 @@ public class RegistrationBean implements Serializable
     public void validatePassword(ComponentSystemEvent event)
     {
         UIComponent components = event.getComponent();
-   
-        UIInput uiInputPassword = (UIInput) components.findComponent("password");
-       password = uiInputPassword.getLocalValue() == null ? ""
-          : uiInputPassword.getLocalValue().toString();
-              
-        UIInput uiInputConfirmPassword = (UIInput) components.findComponent("repassword");
+        
+        UIInput uiInputPassword = (UIInput) components
+                .findComponent("password");
+        password = uiInputPassword.getLocalValue() == null ? ""
+                : uiInputPassword.getLocalValue().toString();
+        
+        UIInput uiInputConfirmPassword = (UIInput) components
+                .findComponent("repassword");
         rePassword = uiInputConfirmPassword.getLocalValue() == null ? ""
-          : uiInputConfirmPassword.getLocalValue().toString();
+                : uiInputConfirmPassword.getLocalValue().toString();
         
-        
-        if (!password.equals(rePassword))
-        {   
-            FacesMessage msg = new FacesMessage("Password must match confirm password");
+        if (!getPassword().equals(getRePassword()))
+        {
+            FacesMessage msg = new FacesMessage(
+                    "Password must match Re password");
             msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-            FacesContext.getCurrentInstance().addMessage(null,
-                  msg);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
+        else
+        {
+            setConfirmPassword(true);
         }
     }
     
@@ -86,5 +93,15 @@ public class RegistrationBean implements Serializable
     public void setRePassword(String rePassword)
     {
         this.rePassword = rePassword;
+    }
+    
+    public boolean isConfirmPassword()
+    {
+        return confirmPassword;
+    }
+    
+    public void setConfirmPassword(boolean confirmPassword)
+    {
+        this.confirmPassword = confirmPassword;
     }
 }
