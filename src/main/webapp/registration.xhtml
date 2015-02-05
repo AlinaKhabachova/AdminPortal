@@ -14,6 +14,10 @@
 		<p:messages id="msgs" />
 		<center>
 			<h:panelGrid columns="2">
+
+				<f:event listener="#{registrationBean.validatePassword}"
+					type="postValidate"  />
+
 				<h:outputText value="First Name:" />
 				<p:inputText id="firstname"
 					value="#{registrationBean.user.firstName}" required="true"
@@ -41,8 +45,8 @@
 
 				<h:outputText value="Password:" />
 				<p:inputText id="password" type="password"
-					value="#{registrationBean.password}" match="repassword"
-					required="true" label="Password">
+					value="#{registrationBean.password}" required="true"
+					label="Password">
 					<f:validateLength minimum="5" />
 
 				</p:inputText>
