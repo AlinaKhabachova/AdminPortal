@@ -17,10 +17,8 @@ import com.alina.videochat.entity.User;
 
 @ManagedBean(name = "registrationBean")
 @ViewScoped
-public class RegistrationBean implements Serializable
+public class RegistrationBean extends BaseBean
 {
-    private static final long serialVersionUID = 952405654821324694L;
-    
     private String            password;
     
     private String            rePassword;
