@@ -1,7 +1,5 @@
 package com.alina.videochat.beans;
 
-import java.io.Serializable;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -19,6 +17,8 @@ import com.alina.videochat.entity.User;
 @ViewScoped
 public class RegistrationBean extends BaseBean
 {
+    private static final long serialVersionUID = -7655683315469674417L;
+
     private String            password;
     
     private String            rePassword;

@@ -12,38 +12,39 @@
 <h:body>
 	<h:form>
 		<p:messages id="msgs" />
+        <f:loadBundle basename="com.alina.labels" var="lbls"/>
+        <f:loadBundle basename="com.alina.messages" var="msg"/>
 		<center>
 			<h:panelGrid columns="2">
 
 				<f:event listener="#{registrationBean.validatePassword}"
 					type="postValidate" />
 
-				<h:outputText value="First Name:" />
+				<h:outputText value="#{lbls['label.firstname']}"/>
 				<p:inputText id="firstname"
 					value="#{registrationBean.user.firstName}" required="true"
 					label="Firstname">
 					<f:validateLength minimum="2" />
 				</p:inputText>
 
-				<h:outputText value="Last Name:" />
+				<h:outputText value="#{lbls['label.lastname']}" />
 				<p:inputText value="#{registrationBean.user.lastName}" />
 
-				<h:outputText value="Email:" />
-				<p:inputText validatorMessage="Invalid email format"
+				<h:outputText value="#{lbls['label.email']}" />
+				<p:inputText validatorMessage="#{msg['message.forEmail']}"
 					value="#{registrationBean.user.email}" required="true"
 					label="Email">
-					<f:validateLength minimum="5" />
 					<f:validateRegex
 						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
 				</p:inputText>
 
-				<h:outputText value="Login:" />
+				<h:outputText value="#{lbls['label.login']}" />
 				<p:inputText value="#{registrationBean.user.login}" required="true"
 					label="Login">
 					<f:validateLength minimum="2" />
 				</p:inputText>
 
-				<h:outputText value="Password:" />
+				<h:outputText value="#{lbls['label.password']}" />
 				<p:inputText id="password" type="password"
 					value="#{registrationBean.password}" required="true"
 					label="Password">
@@ -51,12 +52,12 @@
 
 				</p:inputText>
 
-				<h:outputText value="Re password:" />
+				<h:outputText value="#{lbls['label.repassword']}" />
 				<p:inputText id="repassword" type="password"
 					value="#{registrationBean.rePassword}" />
 			</h:panelGrid>
 			<h:panelGrid columns="1">
-				<p:commandButton value="Save" update="msgs"
+				<p:commandButton value="#{lbls['label.save']}" update="msgs"
 					action="#{registrationBean.save}" />
 			</h:panelGrid>
 		</center>
