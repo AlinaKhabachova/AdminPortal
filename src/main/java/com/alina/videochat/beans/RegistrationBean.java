@@ -26,7 +26,7 @@ public class RegistrationBean extends BaseBean
     private User              user             = new User();
     
     private boolean           confirmPassword;
-    
+
     public void save()
     {
         if (isConfirmPassword())
