@@ -1,66 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-	<title>Registration</title>
+    <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+    <h:outputStylesheet name="bootstrap/css/bootstrap-theme.min.css"/>
+    <title>Registration</title>
 </h:head>
 <h:body>
-	<h:form>
-		<p:messages id="msgs" />
+    <h:form data-toggle="validator" method="post" class="form-horizontal"
+            data-fv-framework="bootstrap"
+            data-fv-message="This value is not valid"
+            data-fv-feedbackicons-valid="glyphicon glyphicon-ok"
+            data-fv-feedbackicons-invalid="glyphicon glyphicon-remove"
+            data-fv-feedbackicons-validating="glyphicon glyphicon-refresh"
+            role="form">
         <f:loadBundle basename="com.alina.labels" var="lbls"/>
         <f:loadBundle basename="com.alina.messages" var="msg"/>
-		<center>
-			<h:panelGrid columns="2">
+        <center>
+            <h:messages id="msgs"/>
+            <h:panelGrid columns="2">
+                <f:event listener="#{registrationBean.validatePassword}"
+                         type="postValidate"/>
 
-				<f:event listener="#{registrationBean.validatePassword}"
-					type="postValidate" />
+                <h:outputText value="#{lbls['label.firstname']}"/>
+                <h:inputText id="firstname"
+                             value="#{registrationBean.user.firstName}" class="form-control" required="true"
+                             label="Firstname">
+                    <f:validateLength minimum="2"/>
+                </h:inputText>
 
-				<h:outputText value="#{lbls['label.firstname']}"/>
-				<p:inputText id="firstname"
-					value="#{registrationBean.user.firstName}" required="true"
-					label="Firstname">
-					<f:validateLength minimum="2" />
-				</p:inputText>
+                <h:outputText value="#{lbls['label.lastname']}"/>
+                <h:inputText value="#{registrationBean.user.lastName}" class="form-control"/>
 
-				<h:outputText value="#{lbls['label.lastname']}" />
-				<p:inputText value="#{registrationBean.user.lastName}" />
+                <h:outputText value="#{lbls['label.email']}"/>
+                <h:inputText validatorMessage="#{msg['message.forEmail']}"
+                             value="#{registrationBean.user.email}" class="form-control" required="true"
+                             label="Email">
+                    <f:validateRegex
+                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                </h:inputText>
 
-				<h:outputText value="#{lbls['label.email']}" />
-				<p:inputText validatorMessage="#{msg['message.forEmail']}"
-					value="#{registrationBean.user.email}" required="true"
-					label="Email">
-					<f:validateRegex
-						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-				</p:inputText>
+                <h:outputText value="#{lbls['label.login']}"/>
+                <h:inputText value="#{registrationBean.user.login}" class="form-control" required="true"
+                             label="Login">
+                    <f:validateLength minimum="2"/>
+                </h:inputText>
 
-				<h:outputText value="#{lbls['label.login']}" />
-				<p:inputText value="#{registrationBean.user.login}" required="true"
-					label="Login">
-					<f:validateLength minimum="2" />
-				</p:inputText>
+                <h:outputText value="#{lbls['label.password']}"/>
+                <h:inputText id="password" type="password"
+                             value="#{registrationBean.password}" class="form-control" required="true"
+                             label="Password">
+                    <f:validateLength minimum="5"/>
 
-				<h:outputText value="#{lbls['label.password']}" />
-				<p:inputText id="password" type="password"
-					value="#{registrationBean.password}" required="true"
-					label="Password">
-					<f:validateLength minimum="5" />
+                </h:inputText>
 
-				</p:inputText>
+                <h:outputText value="#{lbls['label.repassword']}"/>
+                <h:inputText id="repassword" type="password"
+                             value="#{registrationBean.rePassword}" class="form-control"/>
 
-				<h:outputText value="#{lbls['label.repassword']}" />
-				<p:inputText id="repassword" type="password"
-					value="#{registrationBean.rePassword}" />
-			</h:panelGrid>
-			<h:panelGrid columns="1">
-				<p:commandButton value="#{lbls['label.save']}" update="msgs"
-					action="#{registrationBean.save}" />
-			</h:panelGrid>
-		</center>
-	</h:form>
+
+            </h:panelGrid>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">Username</label>
+                <div class="col-xs-5">
+                    <h:inputText type="text" value="#{registrationBean.user.email}" class="form-control" name="username"
+                           data-fv-message="The username is not valid"
+                           required="true" data-fv-notempty-message="The username is required and cannot be empty"
+                           pattern="^[a-zA-Z0-9]+$" data-fv-regexp-message="The username can only consist of alphabetical, number" />
+                </div>
+            </div>
+            <h:panelGrid columns="1">
+                <h:commandButton value="#{lbls['label.save']}" update="msgs"
+                                 action="#{registrationBean.save}" class="btn"/>
+            </h:panelGrid>
+        </center>
+    </h:form>
+
+    <script type="text/javascript">
+        <![CDATA[
+        alert(  $(document).ready(function() {
+            $('#html5Form').formValidation();
+        }));
+        ]]>
+    </script>
+
+
 </h:body>
 </html>
