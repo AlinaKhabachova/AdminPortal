@@ -6,9 +6,9 @@
     <packaging>war</packaging>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.alina</groupId>
-    <artifactId>VideoChat</artifactId>
+    <artifactId>FormEditor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>VideoChat</name>
+    <name>FormEditor</name>
 
 
     <dependencies>
@@ -98,11 +98,6 @@
             <artifactId>commons-logging</artifactId>
             <version>1.1.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.primefaces</groupId>
-            <artifactId>primefaces</artifactId>
-            <version>5.1</version>
-        </dependency>
 
         <dependency>
             <groupId>com.sun.faces</groupId>
@@ -160,7 +155,7 @@
     </dependencies>
 
     <build>
-        <finalName>VideoChat</finalName>
+        <finalName>FormEditor</finalName>
 
         <plugins>
             <plugin>

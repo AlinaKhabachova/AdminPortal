@@ -11,18 +11,12 @@
     <title>Registration</title>
 </h:head>
 <h:body>
-    <h:form data-toggle="validator" method="post" class="form-horizontal"
-            data-fv-framework="bootstrap"
-            data-fv-message="This value is not valid"
-            data-fv-feedbackicons-valid="glyphicon glyphicon-ok"
-            data-fv-feedbackicons-invalid="glyphicon glyphicon-remove"
-            data-fv-feedbackicons-validating="glyphicon glyphicon-refresh"
-            role="form">
-        <f:loadBundle basename="com.alina.labels" var="lbls"/>
-        <f:loadBundle basename="com.alina.messages" var="msg"/>
-        <center>
+
+        <h:form role="form">
+            <f:loadBundle basename="com.alina.labels" var="lbls"/>
+            <f:loadBundle basename="com.alina.messages" var="msg"/>
             <h:messages id="msgs"/>
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="2" style="margin: auto" >
                 <f:event listener="#{registrationBean.validatePassword}"
                          type="postValidate"/>
 
@@ -51,44 +45,22 @@
                 </h:inputText>
 
                 <h:outputText value="#{lbls['label.password']}"/>
-                <h:inputText id="password" type="password"
-                             value="#{registrationBean.password}" class="form-control" required="true"
-                             label="Password">
+                <h:inputSecret id="password"
+                               value="#{registrationBean.password}" class="form-control" required="true"
+                               label="Password">
                     <f:validateLength minimum="5"/>
 
-                </h:inputText>
+                </h:inputSecret>
 
                 <h:outputText value="#{lbls['label.repassword']}"/>
-                <h:inputText id="repassword" type="password"
-                             value="#{registrationBean.rePassword}" class="form-control"/>
-
+                <h:inputSecret id="repassword" value="#{registrationBean.rePassword}"
+                               class="form-control"/>
 
             </h:panelGrid>
-
-            <div class="form-group">
-                <label class="col-xs-3 control-label">Username</label>
-                <div class="col-xs-5">
-                    <h:inputText type="text" value="#{registrationBean.user.email}" class="form-control" name="username"
-                           data-fv-message="The username is not valid"
-                           required="true" data-fv-notempty-message="The username is required and cannot be empty"
-                           pattern="^[a-zA-Z0-9]+$" data-fv-regexp-message="The username can only consist of alphabetical, number" />
-                </div>
-            </div>
-            <h:panelGrid columns="1">
+            <h:panelGrid columns="1" style="margin: auto">
                 <h:commandButton value="#{lbls['label.save']}" update="msgs"
                                  action="#{registrationBean.save}" class="btn"/>
             </h:panelGrid>
-        </center>
-    </h:form>
-
-    <script type="text/javascript">
-        <![CDATA[
-        alert(  $(document).ready(function() {
-            $('#html5Form').formValidation();
-        }));
-        ]]>
-    </script>
-
-
+        </h:form>
 </h:body>
 </html>
