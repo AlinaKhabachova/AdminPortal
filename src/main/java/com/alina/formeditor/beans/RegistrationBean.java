@@ -1,4 +1,4 @@
-package com.alina.videochat.beans;
+package com.alina.formeditor.beans;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -10,8 +10,8 @@ import javax.faces.event.ComponentSystemEvent;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import com.alina.videochat.common.IndexedEntityService;
-import com.alina.videochat.entity.User;
+import com.alina.formeditor.common.IndexedEntityService;
+import com.alina.formeditor.entity.User;
 
 @ManagedBean(name = "registrationBean")
 @ViewScoped

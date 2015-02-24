@@ -1,15 +1,15 @@
-package com.alina.videochat.common;
+package com.alina.formeditor.common;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
-import com.alina.videochat.entity.IndexedEntity;
+import com.alina.formeditor.entity.IndexedEntity;
 
 public class IndexedEntityService
 {
     
     public static EntityManager em = Persistence.createEntityManagerFactory(
-                                           "videochat").createEntityManager();
+                                           "formeditor").createEntityManager();
     
     public static void save(IndexedEntity indexedEntity)
     {

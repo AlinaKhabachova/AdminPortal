@@ -1,4 +1,4 @@
-package com.alina.videochat.entity;
+package com.alina.formeditor.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

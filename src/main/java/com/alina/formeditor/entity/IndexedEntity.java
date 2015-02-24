@@ -1,4 +1,4 @@
-package com.alina.videochat.entity;
+package com.alina.formeditor.entity;
 
 import java.io.Serializable;
 

@@ -1,8 +1,6 @@
-package com.alina.videochat.beans;
+package com.alina.formeditor.beans;
 
 import java.io.Serializable;
-
-import org.apache.log4j.Logger;
 
 public abstract class BaseBean implements Serializable
 {
