@@ -11,56 +11,73 @@
     <title>Registration</title>
 </h:head>
 <h:body>
-
+    <h:panelGroup layout="block" style="position: fixed; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);">
         <h:form role="form">
             <f:loadBundle basename="com.alina.labels" var="lbls"/>
             <f:loadBundle basename="com.alina.messages" var="msg"/>
-            <h:messages id="msgs"/>
-            <h:panelGrid columns="2" style="margin: auto" >
+            <h:panelGrid columns="1" >
                 <f:event listener="#{registrationBean.validatePassword}"
                          type="postValidate"/>
+                <h:panelGroup>
+                    <h:outputText value="#{lbls['label.firstname']}"/>
+                    <h:inputText id="firstname"
+                                 value="#{registrationBean.user.firstName}" styleClass="form-control" required="true"
+                                 label="Firstname">
+                        <f:validateLength minimum="2"/>
+                    </h:inputText>
+                    <h:message for="firstname" errorStyle="color: red" />
+                </h:panelGroup>
 
-                <h:outputText value="#{lbls['label.firstname']}"/>
-                <h:inputText id="firstname"
-                             value="#{registrationBean.user.firstName}" class="form-control" required="true"
-                             label="Firstname">
-                    <f:validateLength minimum="2"/>
-                </h:inputText>
+                <h:panelGroup>
+                    <h:outputText value="#{lbls['label.lastname']}"/>
+                    <h:inputText value="#{registrationBean.user.lastName}" styleClass="form-control"/>
+                </h:panelGroup>
 
-                <h:outputText value="#{lbls['label.lastname']}"/>
-                <h:inputText value="#{registrationBean.user.lastName}" class="form-control"/>
+                <h:panelGroup>
+                    <h:outputText value="#{lbls['label.email']}"/>
+                    <h:inputText id="email"  validatorMessage="#{msg['message.forEmail']}"
+                                 value="#{registrationBean.user.email}" styleClass="form-control" required="true"
+                                 label="Email">
+                        <f:validateRegex
+                                pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                    </h:inputText>
+                    <h:message  for="email" errorStyle="color: red "/>
+                </h:panelGroup>
 
-                <h:outputText value="#{lbls['label.email']}"/>
-                <h:inputText validatorMessage="#{msg['message.forEmail']}"
-                             value="#{registrationBean.user.email}" class="form-control" required="true"
-                             label="Email">
-                    <f:validateRegex
-                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
-                </h:inputText>
+                <h:panelGroup>
+                    <h:outputText value="#{lbls['label.login']}"/>
+                    <h:inputText id="login" value="#{registrationBean.user.login}" styleClass="form-control" required="true"
+                                 label="Login">
+                        <f:validateLength minimum="2"/>
+                    </h:inputText>
+                    <h:message  for="login" errorStyle="color: red"/>
+                </h:panelGroup>
 
-                <h:outputText value="#{lbls['label.login']}"/>
-                <h:inputText value="#{registrationBean.user.login}" class="form-control" required="true"
-                             label="Login">
-                    <f:validateLength minimum="2"/>
-                </h:inputText>
+                <h:panelGroup>
+                    <h:outputText value="#{lbls['label.password']}"/>
+                    <h:inputSecret id="password"
+                                   value="#{registrationBean.password}" styleClass="form-control" required="true"
+                                   label="Password" >
+                        <f:validateLength minimum="5"/>
+                    </h:inputSecret>
+                    <h:message for="password"  errorStyle="color: red" />
+                </h:panelGroup>
 
-                <h:outputText value="#{lbls['label.password']}"/>
-                <h:inputSecret id="password"
-                               value="#{registrationBean.password}" class="form-control" required="true"
-                               label="Password">
-                    <f:validateLength minimum="5"/>
+                <h:panelGroup layout="block">
+                    <h:outputText value="#{lbls['label.repassword']}"/>
+                    <h:inputSecret id="repassword" value="#{registrationBean.rePassword}"
+                                   styleClass="form-control"/>
 
-                </h:inputSecret>
-
-                <h:outputText value="#{lbls['label.repassword']}"/>
-                <h:inputSecret id="repassword" value="#{registrationBean.rePassword}"
-                               class="form-control"/>
+                </h:panelGroup>
 
             </h:panelGrid>
             <h:panelGrid columns="1" style="margin: auto">
                 <h:commandButton value="#{lbls['label.save']}" update="msgs"
                                  action="#{registrationBean.save}" class="btn"/>
             </h:panelGrid>
+
         </h:form>
+    </h:panelGroup>
 </h:body>
 </html>
