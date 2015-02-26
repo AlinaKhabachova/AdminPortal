@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <h:outputStylesheet name="bootstrap/css/bootstrap.min.css"/>
+    <h:outputStylesheet name="bootstrap/css/bootstrap-theme.min.css"/>
+    <title>Login</title>
+</h:head>
+<h:body>
+    <h:panelGroup layout="block" style="position: fixed; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);">
+        <h:form role="form">
+            <f:loadBundle basename="com.alina.labels" var="lbls"/>
+            <f:loadBundle basename="com.alina.messages" var="msg"/>
+            <h:panelGrid columns="1">
+                <h:panelGroup>
+                    <h:outputText value="#{lbls['label.login']}"/>
+                    <h:inputText id="login"  value="#{loginBean.login}" styleClass="form-control"/>
+                </h:panelGroup>
+
+                <h:panelGroup>
+                    <h:outputText value="#{lbls['label.password']}"/>
+                    <h:inputSecret id="password" value="#{loginBean.password}" styleClass="form-control"/>
+                </h:panelGroup>
+            </h:panelGrid>
+
+            <h:panelGrid columns="2">
+                <h:commandButton value="#{lbls['label.singup']}"  action="#{loginBean.redirectTo(registration)}"
+                                 class="btn">
+                        </h:commandButton>
+
+                <h:commandButton value="#{lbls['label.singin']}" update="msgs"
+                                 action="#{loginBean.redirectTo(hi)}" class="btn"/>
+            </h:panelGrid>
+        </h:form>
+    </h:panelGroup>
+</h:body>
+</html>
