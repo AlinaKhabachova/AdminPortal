@@ -73,7 +73,7 @@
 
             </h:panelGrid>
             <h:panelGrid columns="2">
-                <h:commandButton value="#{lbls['label.cancel']}" action="#{loginBean.redirectTo(login)}"
+                <h:commandButton value="#{lbls['label.cancel']}" action="#{registrationBean.goToLogin}"
                                  class="btn"/>
                 <h:commandButton value="#{lbls['label.save']}" update="msgs"
                                  action="#{registrationBean.save}" class="btn" style="margin: auto"/>

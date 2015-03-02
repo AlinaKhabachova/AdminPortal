@@ -4,11 +4,10 @@ import com.alina.formeditor.common.IndexedEntityService;
 import com.alina.formeditor.entity.User;
 import com.alina.formeditor.enums.Pages;
 import com.alina.formeditor.helpers.RedirectHelper;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import java.io.IOException;
 
 @ManagedBean(name = "loginBean")
 @ViewScoped
@@ -25,9 +24,9 @@ public class LoginBean extends BaseBean
         RedirectHelper.redirectTo(Pages.REGISTRATION);
     }
 
-
     public void login()
     {
+        setPassword(DigestUtils.md5Hex(getPassword()));
         setUser((User)IndexedEntityService.findByLogin(login));
 
         if(user!=null&&user.getPassword().equals(getPassword()))

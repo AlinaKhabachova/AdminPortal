@@ -29,10 +29,8 @@ public class IndexedEntityService
 
     public static IndexedEntity findByLogin(String login)
     {
-        em.getTransaction().begin();
-        Query query = em.createQuery("SELECT u FROM Users u where u.login = :login ");
+        Query query = em.createQuery("SELECT u FROM User u where u.login = :login ");
         query.setParameter("login", login);
-        em.getTransaction().commit();
         return (User)query.getSingleResult();
     }
 }

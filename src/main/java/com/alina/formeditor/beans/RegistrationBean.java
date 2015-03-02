@@ -35,11 +35,10 @@ public class RegistrationBean extends BaseBean
         {
             user.setPassword(DigestUtils.md5Hex(getPassword()));
             IndexedEntityService.save(getUser());
+            goToLogin();
         }
     }
 
-
-    
     public void validatePassword(ComponentSystemEvent event)
     {
         UIComponent components = event.getComponent();
@@ -71,7 +70,7 @@ public class RegistrationBean extends BaseBean
     {
         RedirectHelper.redirectTo(Pages.LOGIN);
     }
-    
+
     public User getUser()
     {
         return user;
