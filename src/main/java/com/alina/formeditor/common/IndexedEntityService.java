@@ -2,15 +2,17 @@ package com.alina.formeditor.common;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import com.alina.formeditor.entity.IndexedEntity;
+import com.alina.formeditor.entity.User;
 
 public class IndexedEntityService
 {
     
     public static EntityManager em = Persistence.createEntityManagerFactory(
                                            "formeditor").createEntityManager();
-    
+
     public static void save(IndexedEntity indexedEntity)
     {
         em.getTransaction().begin();
@@ -23,5 +25,14 @@ public class IndexedEntityService
         em.getTransaction().begin();
         em.remove(indexedEntity);
         em.getTransaction().commit();
+    }
+
+    public static IndexedEntity findByLogin(String login)
+    {
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT u FROM Users u where u.login = :login ");
+        query.setParameter("login", login);
+        em.getTransaction().commit();
+        return (User)query.getSingleResult();
     }
 }

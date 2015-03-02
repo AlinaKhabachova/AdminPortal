@@ -8,6 +8,8 @@ import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 
+import com.alina.formeditor.enums.Pages;
+import com.alina.formeditor.helpers.RedirectHelper;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import com.alina.formeditor.common.IndexedEntityService;
@@ -35,6 +37,8 @@ public class RegistrationBean extends BaseBean
             IndexedEntityService.save(getUser());
         }
     }
+
+
     
     public void validatePassword(ComponentSystemEvent event)
     {
@@ -61,6 +65,11 @@ public class RegistrationBean extends BaseBean
         {
             setConfirmPassword(true);
         }
+    }
+
+    public void goToLogin()
+    {
+        RedirectHelper.redirectTo(Pages.LOGIN);
     }
     
     public User getUser()
