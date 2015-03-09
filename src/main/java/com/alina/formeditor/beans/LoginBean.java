@@ -27,7 +27,10 @@ public class LoginBean extends BaseBean
     public void login()
     {
         setPassword(DigestUtils.md5Hex(getPassword()));
-        setUser((User)IndexedEntityService.findByLogin(login));
+
+        setUser(IndexedEntityService.em
+                .createNamedQuery("User.findByLogin", User.class)
+                .setParameter("login", "ohbarry").getSingleResult());
 
         if(user!=null&&user.getPassword().equals(getPassword()))
         {

@@ -26,11 +26,4 @@ public class IndexedEntityService
         em.remove(indexedEntity);
         em.getTransaction().commit();
     }
-
-    public static IndexedEntity findByLogin(String login)
-    {
-        Query query = em.createQuery("SELECT u FROM User u where u.login = :login ");
-        query.setParameter("login", login);
-        return (User)query.getSingleResult();
-    }
 }

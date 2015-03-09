@@ -1,12 +1,10 @@
 package com.alina.formeditor.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
+@NamedQuery(name="User.findByLogin", query="SELECT u FROM User u where u.login = :login")
 public class User extends IndexedEntity
 {
     private static final long serialVersionUID = -7197404256920280771L;
