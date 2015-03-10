@@ -26,7 +26,10 @@
                     <h:outputText value="#{lbls['label.password']}"/>
                     <h:inputSecret id="password" value="#{loginBean.password}" styleClass="form-control"/>
                 </h:panelGroup>
+                <f:event listener="#{loginBean.login}"
+                         type="postValidate"/>
             </h:panelGrid>
+
 
             <h:panelGrid columns="2">
                 <h:commandButton value="#{lbls['label.singup']}"  action="#{loginBean.goToRegistration}"

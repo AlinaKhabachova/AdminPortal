@@ -4,6 +4,7 @@ import com.alina.formeditor.common.IndexedEntityService;
 import com.alina.formeditor.entity.User;
 import com.alina.formeditor.enums.Pages;
 import com.alina.formeditor.helpers.RedirectHelper;
+import com.alina.formeditor.helpers.ValidationHelper;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.faces.bean.ManagedBean;
@@ -26,15 +27,16 @@ public class LoginBean extends BaseBean
 
     public void login()
     {
-        setPassword(DigestUtils.md5Hex(getPassword()));
-
-        setUser(IndexedEntityService.em
-                .createNamedQuery("User.findByLogin", User.class)
-                .setParameter("login", "ohbarry").getSingleResult());
-
-        if(user!=null&&user.getPassword().equals(getPassword()))
+        if (!ValidationHelper.isNullOrEmpty(getLogin(),getPassword()))
         {
-            RedirectHelper.redirectTo(Pages.HI);
+            setPassword(DigestUtils.md5Hex(getPassword()));
+            setUser(IndexedEntityService.em
+                    .createNamedQuery("User.findByLogin", User.class)
+                    .setParameter("login", getLogin()).getSingleResult());
+
+            if (user != null && user.getPassword().equals(getPassword())) {
+                RedirectHelper.redirectTo(Pages.HI);
+            }
         }
     }
 
