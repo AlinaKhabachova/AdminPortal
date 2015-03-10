@@ -9,15 +9,18 @@ import java.io.IOException;
 
 public class RedirectHelper
 {
+
     public static void redirectTo(Pages page)
     {
         try
         {
-            ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+            ExternalContext ec = FacesContext.getCurrentInstance()
+                    .getExternalContext();
             HttpServletRequest req = (HttpServletRequest) ec.getRequest();
-            req.getRequestURL().substring(0,req.getRequestURL().indexOf(req.getContextPath()));
-            req.getRequestURL().append(page.toString());
-            FacesContext.getCurrentInstance().getExternalContext().redirect("formeditor/"+ page.toString());
+            String urlRequest = req.getRequestURL().substring(0, req.getRequestURL().indexOf(req.getRequestURI()));
+            urlRequest = urlRequest.concat("/formeditor/" + page.toString());
+            FacesContext.getCurrentInstance().getExternalContext()
+                    .redirect(urlRequest);
         }
         catch (IOException e)
         {
